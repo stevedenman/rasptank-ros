@@ -12,6 +12,7 @@ Just added it to the package.xml by hand.
 
 How to actaully install it;
 ```
+cat /etc/os-release
 rosdep install -y --from-paths src --ignore-src --rosdistro melodic -r --os=debian:buster
 ```
 
