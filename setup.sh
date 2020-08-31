@@ -10,4 +10,4 @@ sudo usermod -aG 997,kmem pi
 # log out and back in
 
 sudo apt-get update
-sudo apt-get install python-rpi.gpio
+sudo apt-get install python-rpi.gpio -y
