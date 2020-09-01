@@ -11,6 +11,13 @@
     <remap from="image" to="/usb_cam/image_raw"/>
     <param name="autosize" value="true" />
   </node> -->
-  <node name="ultrasonic" pkg="rasptank" type="ultrasonic.py">
+  <!-- <node name="ultrasonic" pkg="rasptank" type="ultrasonic.py">
+  </node> -->
+
+  <node name="teleop_twist_keyboard" pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" output="screen">
   </node>
+
+  <node name="tracks" pkg="rasptank" type="tracks.py" >
+  </node>
+
 </launch>

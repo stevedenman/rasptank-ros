@@ -68,7 +68,8 @@
   <!-- camera -->
   <exec_depend>usb_cam</exec_depend>
   <!-- <exec_depend>image_view</exec_depend> -->
-
+  <!-- movement -->
+  <exec_depend>teleop_twist_keyboard</exec_depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>
