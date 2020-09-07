@@ -33,11 +33,6 @@ RUN source /opt/ros/${ROS_DISTRO}/setup.bash \
     # Clear apt-cache to reduce image size
     && rm -rf /var/lib/apt/lists/*
 
-# Set permissions required for GPIO and camera access.
-# Can find groups from ls /dev/mem, /dev/gpio*, /dev/video*
-# From https://github.com/flyte/pi-mqtt-gpio/issues/55
-RUN groupadd -g 997 997 && usermod -aG 997,kmem pi && usermod -aG video pi
-
 COPY ./ros_catkin_entrypoint.sh /
 ENTRYPOINT ["/ros_catkin_entrypoint.sh"]
 CMD ["roslaunch rasptank rasptank"]
