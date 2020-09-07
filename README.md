@@ -1,24 +1,24 @@
-TODO
-- node to control track motors
-- node to publish image topic(s)
-- node to control arm motors
-- control with wiimote?
+# Adeept RaspTank ROS package
 
-HOW TO
+This ROS package provides support for the RaspTank robot from Adeept.
 
-## Camera
+## Use
 
-https://answers.ros.org/question/304777/new-in-ros-sensor_msgsimage-in-opencv/
+You will need to enable the Camera and I2C (for the Motor HAT) on the Raspberry PI.
 
-Used usb_cam successfully.
+Clone the repository into a catkin workspace and build.
 
-# Setting up the robot
+There is also a docker image, and the latest build should be available from GitHub Packages;
 
-## Host raspi-config
+```sh
+docker pull docker.pkg.github.com/stevedenman/rasptank-ros/rasptank:arm32v7:melodic
+```
 
-Must enable;
+The docker image has been tested running on a host running Raspbian. There are some groups and device permissions that need setting in-order that the GPIO pins and camera can be accessed. I'm not sure if the groups will necessarily be the same on other host OS.
 
-- Camera
-- Enable I2C (for Motor HAT)
+## To-do
 
-
+- Improve motor control.
+- Add OpenCV for image processing for object recognition and tracking.
+- Arm motor control.
+- LED's.
