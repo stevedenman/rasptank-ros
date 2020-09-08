@@ -5,10 +5,16 @@ FROM ${ARCH}ros:${ROS_DISTRO}
 
 SHELL ["/bin/bash","-c"]
 
+# Package install without prompts, using defaults
+ENV DEBIAN_FRONTEND noninteractive
+
 RUN apt-get update && apt-get install -y --force-yes --no-install-recommends \
         sudo \
         nano \
+        vim \
         net-tools \
+        # avoids warnings in logs
+        apt-utils \
         # For use with rosdep
         python-pip \
         # Clear apt-cache to reduce image size
@@ -19,7 +25,7 @@ ENV CATKIN_WS=/root/catkin_ws
 RUN mkdir -p $CATKIN_WS/src
 WORKDIR $CATKIN_WS/src
 
-COPY ** $CATKIN_WS/src/rasptank/
+COPY . $CATKIN_WS/src/rasptank/
 
 # Add robot packages to local catkin workspace
 RUN source /opt/ros/${ROS_DISTRO}/setup.bash \
@@ -35,4 +41,4 @@ RUN source /opt/ros/${ROS_DISTRO}/setup.bash \
 
 COPY ./ros_catkin_entrypoint.sh /
 ENTRYPOINT ["/ros_catkin_entrypoint.sh"]
-CMD ["roslaunch rasptank rasptank"]
+CMD ["roslaunch rasptank rasptank.launch"]
